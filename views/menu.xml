@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_automation_root" name="Automation"/>
+
+    <menuitem id="menu_automation_rule"
+              name="Rules"
+              parent="menu_automation_root"
+              action="action_automation_rule"/>
+
+</odoo>

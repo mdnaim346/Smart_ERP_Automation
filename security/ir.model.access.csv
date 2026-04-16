@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_automation_rule,automation.rule,model_automation_rule,,1,1,1,1
+stock.automation,stock.automation,model_stock_automation,,1,1,1,1

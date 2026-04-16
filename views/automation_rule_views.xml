@@ -1,0 +1,45 @@
+<odoo>
+
+    <record id="action_automation_rule" model="ir.actions.act_window">
+        <field name="name">Automation Rules</field>
+        <field name="res_model">automation.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- TREE VIEW -->
+    <record id="view_automation_rule_tree" model="ir.ui.view">
+        <field name="name">automation.rule.tree</field>
+        <field name="model">automation.rule</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="trigger"/>
+                <field name="action_type"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- FORM VIEW -->
+    <record id="view_automation_rule_form" model="ir.ui.view">
+        <field name="name">automation.rule.form</field>
+        <field name="model">automation.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+
+                    <group>
+                        <field name="name"/>
+                        <field name="model_id"/>
+                        <field name="trigger"/>
+                        <field name="action_type"/>
+                        <field name="active"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
