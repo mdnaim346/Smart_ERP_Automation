@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_automation_rule,automation.rule,model_automation_rule,,1,1,1,1
-stock.automation,stock.automation,model_stock_automation,,1,1,1,1
+access_automation_rule_manager,automation.rule manager,model_automation_rule,group_smart_automation_manager,1,1,1,1
+access_automation_rule_user,automation.rule user,model_automation_rule,group_smart_automation_user,1,0,0,0
+access_automation_rule_log_manager,automation.rule.log manager,model_automation_rule_log,group_smart_automation_manager,1,1,1,1
+access_automation_rule_log_user,automation.rule.log user,model_automation_rule_log,group_smart_automation_user,1,0,0,0

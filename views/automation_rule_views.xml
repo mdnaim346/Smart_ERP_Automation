@@ -6,37 +6,120 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- TREE VIEW -->
+    <record id="action_automation_rule_log" model="ir.actions.act_window">
+        <field name="name">Automation Logs</field>
+        <field name="res_model">automation.rule.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <record id="view_automation_rule_tree" model="ir.ui.view">
         <field name="name">automation.rule.tree</field>
         <field name="model">automation.rule</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
-                <field name="model_id"/>
-                <field name="trigger"/>
                 <field name="action_type"/>
+                <field name="trigger"/>
+                <field name="company_id"/>
+                <field name="last_run_date"/>
+                <field name="execution_count"/>
+                <field name="failure_count"/>
                 <field name="active"/>
             </tree>
         </field>
     </record>
 
-    <!-- FORM VIEW -->
     <record id="view_automation_rule_form" model="ir.ui.view">
         <field name="name">automation.rule.form</field>
         <field name="model">automation.rule</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_run_now" type="object" string="Run Now" class="oe_highlight" groups="Smart_ERP_Automation.group_smart_automation_manager"/>
+                </header>
                 <sheet>
-
                     <group>
-                        <field name="name"/>
-                        <field name="model_id"/>
-                        <field name="trigger"/>
-                        <field name="action_type"/>
-                        <field name="active"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                            <field name="sequence"/>
+                            <field name="company_id"/>
+                            <field name="responsible_id"/>
+                        </group>
+                        <group>
+                            <field name="action_type"/>
+                            <field name="model_id"/>
+                            <field name="trigger"/>
+                            <field name="max_records_per_run"/>
+                            <field name="last_run_date" readonly="1"/>
+                        </group>
                     </group>
+                    <group string="Action Options">
+                        <field name="auto_post_invoice" invisible="action_type != 'create_invoice'"/>
+                        <field name="reorder_quantity" invisible="action_type != 'create_po'"/>
+                    </group>
+                    <group string="Statistics">
+                        <field name="execution_count"/>
+                        <field name="success_count"/>
+                        <field name="failure_count"/>
+                    </group>
+                    <notebook>
+                        <page string="Logs">
+                            <field name="log_ids" readonly="1">
+                                <tree>
+                                    <field name="started_at"/>
+                                    <field name="status"/>
+                                    <field name="processed_count"/>
+                                    <field name="skipped_count"/>
+                                    <field name="failed_count"/>
+                                    <field name="message"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
+    <record id="view_automation_rule_log_tree" model="ir.ui.view">
+        <field name="name">automation.rule.log.tree</field>
+        <field name="model">automation.rule.log</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="started_at"/>
+                <field name="rule_id"/>
+                <field name="status"/>
+                <field name="processed_count"/>
+                <field name="skipped_count"/>
+                <field name="failed_count"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_automation_rule_log_form" model="ir.ui.view">
+        <field name="name">automation.rule.log.form</field>
+        <field name="model">automation.rule.log</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="rule_id"/>
+                            <field name="status"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="started_at"/>
+                            <field name="finished_at"/>
+                            <field name="processed_count"/>
+                            <field name="skipped_count"/>
+                            <field name="failed_count"/>
+                        </group>
+                    </group>
+                    <field name="message"/>
                 </sheet>
             </form>
         </field>

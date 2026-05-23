@@ -1,8 +1,10 @@
 {
     'name': 'Smart ERP Automation',
     'version': '1.0',
+    'license': 'LGPL-3',
     'depends': ['sale', 'stock', 'purchase', 'mail'],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'data/cron.xml',
         'views/automation_rule_views.xml',

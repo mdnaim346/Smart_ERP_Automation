@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <menuitem id="menu_automation_root" name="Automation"/>
+    <menuitem id="menu_automation_root"
+              name="Automation"
+              groups="Smart_ERP_Automation.group_smart_automation_user"/>
 
     <menuitem id="menu_automation_rule"
               name="Rules"
               parent="menu_automation_root"
-              action="action_automation_rule"/>
+              action="action_automation_rule"
+              groups="Smart_ERP_Automation.group_smart_automation_user"/>
+
+    <menuitem id="menu_automation_rule_log"
+              name="Logs"
+              parent="menu_automation_root"
+              action="action_automation_rule_log"
+              groups="Smart_ERP_Automation.group_smart_automation_user"/>
 
 </odoo>
